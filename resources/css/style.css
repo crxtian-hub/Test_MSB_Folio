@@ -1,0 +1,1334 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    border: 0;
+    margin: 0;
+    text-decoration: none;
+    /* color: black; */
+    z-index: 1;
+}
+*::selection{
+    background-color: black;
+    color: white;
+}
+
+:root{
+    --blueBE:#004eb7;
+    --grid-cols: 8;
+    --grid-gap: 1vw;
+    --grid-width: 96vw;
+    --grid-col-size: calc((var(--grid-width) - (var(--grid-cols) - .2) * var(--grid-gap)) / var(--grid-cols));
+    --projects-gap: 1.13vw;
+    --nav-info-accent-bg: #000;
+    --nav-info-accent-fg: #fff;
+    --nav-info-accent-duration: .38s;
+}
+
+
+.gridContainer{
+    height: 100%;
+    width: var(--grid-width);
+    left: 2%;
+    position: fixed;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(var(--grid-cols), 1fr);
+    column-gap: var(--grid-gap);
+}
+
+.gridCol {
+    height: 100%;
+    background: rgba(116, 6, 6, 0.1);
+}
+.gridButton{
+    background-color: transparent;
+    position: fixed;
+    bottom: 5%;
+    z-index: 1000;
+    cursor: pointer;
+    font-size: 3vw;
+    display: flex;
+    align-items:start;
+    justify-content: center;
+}
+
+nav{
+    display: flex;
+    position: fixed;
+    background-color: #fff;
+    width: 100vw;
+    height: 7.7vw;
+    z-index: 100;
+}
+
+.navbarGuest{
+    background-color: #fff;
+    z-index: 1000;
+}
+
+.navbarGuest .hMRSF,
+.navbarGuest .infoA{
+    color: #000;
+}
+
+.navbarGuest .infoA{
+    transition: background-color var(--nav-info-accent-duration) ease, color var(--nav-info-accent-duration) ease;
+}
+
+.navbarGuest .hMRSF{
+    left: 1.9vw;
+}
+
+.navbarGuest .infoA{
+    right: 1.9vw;
+}
+
+.navbarGuest .infoAActive{
+    color: #fff;
+    background-color: #000;
+    padding: 0 .1vw;
+    height: auto;
+    /* display: inline-flex; */
+    /* align-items: center; */
+    cursor: default;
+    text-decoration: none;
+    animation: navbarInfoAccentIn var(--nav-info-accent-duration) ease both;
+}
+
+
+/* !BACKEND start */
+
+.logoBackEnd,
+.backendBrand{
+    position: absolute;
+    left: 1.79vw;
+    top: 2.73vw;
+}
+.backendBrand{
+    color: var(--blueBE);
+    font-size: 1.7vw;
+    font-weight: 700;
+}
+.hMRSF{
+    position: absolute;
+    left: 26.2vw;
+    top: 2.73vw;
+    font-size: 1.7vw;
+    color: var(--blueBE);
+    font-weight: 700;
+}
+.hMRSFWithSubtitle{
+    display: flex;
+    flex-direction: column;
+    gap: .5vw;
+}
+.hMRSFSubtitle{
+    font-size: 1.05vw;
+    font-weight: 400;
+    /* line-height: 1; */
+    text-transform: none;
+    margin-top: -.2vw;
+    margin-left: .1vw;
+    position: absolute;
+    top: 2vw;
+}
+
+.navbarGuest .hMRSFSubtitle{
+    display: inline-flex;
+    width: fit-content;
+}
+
+.navbarGuest.navbarGuestInfo .hMRSFSubtitle{
+    animation: navbarSubtitleFadeIn var(--nav-info-accent-duration) ease both;
+}
+
+@keyframes navbarInfoAccentIn{
+    from{
+        background-color: transparent;
+        color: #000;
+    }
+    to{
+        background-color: var(--nav-info-accent-bg);
+        color: var(--nav-info-accent-fg);
+    }
+}
+
+@keyframes navbarSubtitleFadeIn{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .navbarGuest .infoAActive,
+    .navbarGuest.navbarGuestInfo .hMRSFSubtitle{
+        animation: none;
+    }
+}
+.pwLoginContainer{
+    position: fixed;
+    display: flex;
+    left: 27.3vw;
+    top: 40%;
+    width: 17vw;
+}
+.pwLoginContainer input{
+    background-color: var(--blueBE);
+    color: white;
+    font-size: 2vw;
+    position: absolute;
+    top: 0;
+    width: 10vw;
+    min-width: 1px;
+    outline: none;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: width 0.15s ease-out;
+    box-sizing: border-box;
+}
+
+.pwLoginContainer button{
+    background-color:transparent; 
+    font-size: 2.7vw;
+    color: var(--blueBE);
+    position: absolute;
+    right: -.25vw;
+    top: -.25vw;
+}
+.pwLoginContainer button:hover{
+    cursor: pointer;
+}
+
+
+.pwLoginContainer input::placeholder{
+    color: #B4B5B4;
+    font-weight: 700;
+    font-size: 2vw;
+}
+
+.error{
+    position: fixed;
+    color: crimson;
+    font-size: .8vw;
+    bottom: 50%;
+    left: 26.3vw;
+    text-transform: uppercase;
+}
+
+
+/* ! add and edit project page */
+.logoutButton{
+    color: var(--blueBE);
+    background: transparent;
+    font-size: 1.7vw;
+    position: absolute;
+    font-weight: 700;
+    right: 1.79vw;
+    top: 2.5vw;
+    cursor: pointer;
+}
+.logoutButton ion-icon{
+    transform: translateY(.27vw);
+}
+.logoutButton:hover span{
+    text-decoration: underline;
+}
+.logoutButtonThirdCol{
+    left: 26.2vw;
+    right: auto;
+    /* top: 2.73vw; */
+}
+.backendPageLabel{
+    position: absolute;
+    left: calc(2vw + (var(--grid-col-size) + var(--grid-gap)) * 3);
+    top: 2.73vw;
+    font-size: 1.7vw;
+    color: var(--blueBE);
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.variousForm{
+    position: absolute;
+    display: flex;
+    left: 26.3vw;
+    top: 8.5vw;
+    gap: 1vw;
+    /* background-color: red; */
+    
+}
+.infoEditWrittenColumn{
+    margin-left: calc(var(--grid-col-size) + var(--grid-gap));
+}
+.writtenContainer{
+    display: flex;
+    flex-direction: column;
+    /* background-color: #37547a79; */
+}
+
+.allPhotosInputsContainers{
+    display: flex;
+    flex-direction: column;
+    gap: 3vw;
+}
+.miniParagraphContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 0.6vw;
+}
+.contactPadding{
+    padding-bottom: 20vw;
+}
+.miniSecTit{
+    /* background-color: green; */
+    text-transform: uppercase;
+    color: var(--blueBE);
+    font-size: 1.1vw;
+}
+.fileSquare{
+    width: var(--grid-col-size);
+    height: var(--grid-col-size);
+    aspect-ratio: 1 / 1;
+    border: .5px solid var(--blueBE);
+    display: grid;
+    place-items: center;
+    color: var(--blueBE);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+#coverPreviewBox::before,
+#infoPhotoPreviewBox::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--blueBE);
+    opacity: 0;
+    transition: opacity 0.15s ease-out;
+    z-index: 1;
+}
+.fileSquare img{
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+.photoInput{
+    position: absolute;
+    inset: 0;
+    display: none;
+    cursor: pointer;
+}
+.filePlus{
+    font-size: 1.5vw;
+    line-height: 1;
+    font-weight: 700;
+    z-index: 2;
+}
+.coverPreview{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* object-position: bottom; */
+    display: none;
+    z-index: 0;
+}
+.fileSquare.has-preview .coverPreview{
+    display: block;
+}
+.fileSquare.has-preview .filePlus{
+    display: none;
+}
+#coverPreviewBox.has-preview:hover::before,
+#infoPhotoPreviewBox.has-preview:hover::before{
+    opacity: 0.4;
+}
+#coverPreviewBox.has-preview:hover .filePlus,
+#infoPhotoPreviewBox.has-preview:hover .filePlus{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+.otherPhotosGrid{
+    display: grid;
+    grid-template-columns: repeat(2, var(--grid-col-size));
+    grid-auto-rows: var(--grid-col-size);
+    gap: 1vw;
+}
+.otherPhotosPreview{
+    display: contents;
+}
+.otherPhotosExisting{
+    display: contents;
+}
+.otherPreviewItem{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+}
+.otherPreviewItem::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--blueBE);
+    opacity: 0;
+    transition: opacity 0.15s ease-out;
+    z-index: 1;
+}
+.otherPreviewImg{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+.otherPreviewRemove{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.6vw;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.15s ease-out;
+    z-index: 2;
+    background: transparent;
+    padding: 0;
+}
+.otherPreviewItem:hover .otherPreviewRemove{
+    opacity: 1;
+}
+.otherPreviewItem:hover::before{
+    opacity: 0.4;
+}
+
+.creditRow{
+    display:flex;
+    gap: 1vw;
+    /* margin-bottom:8px; */
+}
+.writPlaHold{
+    background-color: transparent;
+    text-decoration: underline;
+    outline: none;
+    color: var(--blueBE);
+    width: 10.8vw;
+    font-size: .9vw;
+}
+.writPlaHold::placeholder{
+    color: var(--blueBE);
+}
+input::selection{
+    background-color:rgb(212, 212, 212);
+}
+.addCredit{
+    padding: 0;
+}
+.addCredit ion-icon{
+    position: absolute;
+    left: 24.3vw;
+    font-size: 1.5vw;
+    color: var(--blueBE);
+    cursor: pointer;
+}
+.removeCredit{
+    cursor: pointer;
+    font-size: 1.5vw;
+    color: var(--blueBE);
+    cursor: pointer;
+    padding: 0;
+    background-color: transparent;
+    transform: translateX(1.2vw);
+    /* transform: rotate(45deg); */
+}
+
+
+.saveButton,.deleteButton{
+    cursor: pointer;
+    position: fixed;
+    bottom: 1.79vw;
+    left: calc(2.7vw + (var(--grid-col-size) + var(--grid-gap)) * 5 - var(--grid-gap) - 0.35vw);
+    transform: translateX(-100%);
+    background-color: var(--blueBE);
+    color: white;
+    font-size: 0.95vw;
+    line-height: 1;
+    height: 1.8vw;
+    padding: 0 0.35vw;
+    text-transform: uppercase;
+}
+.deleteButton{
+    left: calc(2.6vw + (var(--grid-col-size) + var(--grid-gap)) * 5);
+    transform: none;
+}
+
+/* ! end add project page */
+
+/* ! welcome edit mode page */
+.infoA{
+    position: absolute;
+    right: 1.79vw;
+    top: 2.73vw;
+    font-size: 1.7vw;
+    color: var(--blueBE);
+    font-weight: 700;
+}
+.addProjectButton{
+    position: fixed;
+    right: 2vw;
+    bottom: 1.79vw;
+    width: 3.8vw;
+    height: 3.8vw;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--blueBE);
+    color: #fff;
+    z-index: 25;
+}
+.addProjectButton ion-icon{
+    font-size: 2.5vw;
+}
+.infoEditButton{
+    width: fit-content;
+    height: 1.8vw;
+    padding: 0 0.35vw;
+    left: calc(2.7vw + (var(--grid-col-size) + var(--grid-gap)) * 5 - var(--grid-gap) - 0.35vw);
+    right: auto;
+    bottom: 1.79vw;
+    transform: translateX(-100%);
+    font-size: 0.95vw;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.projectsGrid{
+    position: relative;
+    width: var(--grid-width);
+    left: 2vw;
+    top: 7.7vw;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: var(--projects-gap);
+    row-gap: .95vw;
+    align-items: start;
+}
+.projectsGrid.is-enhanced{
+    display: block;
+}
+.projectCard{
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    margin: 0;
+}
+.projectsGrid[data-sort-enabled="true"] .projectCard{
+    cursor: grab;
+}
+.projectsGrid.is-enhanced .projectCard{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.projectsGrid[data-sort-enabled="true"] .projectCard{
+    transition: transform 0.25s ease, opacity 0.2s ease;
+}
+.projectsGrid[data-sort-enabled="true"] .projectCard.is-dragging{
+    opacity: 0.45;
+    cursor: grabbing;
+}
+.projectsGrid[data-sort-enabled="true"].is-order-saving .projectCardSortHandle{
+    opacity: 0.55;
+}
+.projectCardMedia{
+    position: relative;
+    overflow: hidden;
+}
+.projectCover{
+    width: 100%;
+    max-width: none;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+.projectCardOverlay{
+    position: absolute;
+    top: 0.8vw;
+    left: 0.8vw;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    max-width: calc(100% - 1.6vw);
+    padding: 0.45vw 0.65vw;
+    background-color: #000;
+    color: #fff;
+    opacity: 0;
+    z-index: 3;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.projectCard:hover .projectCardOverlay{
+    opacity: 1;
+}
+.projectCardActions{
+    position: absolute;
+    top: 0.1vw;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: .5vw;
+    opacity: 0;
+    z-index: 4;
+    transition: opacity 0.2s ease;
+    margin: 1.1vw;
+}
+.projectCard:hover .projectCardActions{
+    opacity: 1;
+}
+.projectCardActionForm{
+    display: inline-flex;
+}
+.projectCardSortHandle{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.3vw 0.4vw;
+    background-color: var(--blueBE);
+    color: #fff;
+    cursor: grab;
+}
+.projectCardSortHandle ion-icon{
+    font-size: 1.15vw;
+    pointer-events: none;
+}
+.projectCardSortHandle:active{
+    cursor: grabbing;
+}
+.projectCardAction{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.45vw 0.65vw;
+    background-color: var(--blueBE);
+    color: #fff;
+    font-size: 0.95vw;
+    font-weight: 300;
+    text-transform: uppercase;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.projectCardTitle{
+    font-size: 0.95vw;
+    font-weight: 300;
+    text-transform: uppercase;
+    line-height: 1;
+    color: #fff;
+}
+.projectCardMeta{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3vw 0.8vw;
+    padding-top: 0.45vw;
+    color: #000;
+    text-transform: uppercase;
+}
+.projectCardMetaItem{
+    font-size: 0.82vw;
+    line-height: 1.2;
+}
+.projectsEmpty{
+    margin-top: 10vw;
+    color: black;
+    font-size: 1.1vw;
+    text-transform: uppercase;
+}
+
+.infoPage{
+    position: relative;
+    width: var(--grid-width);
+    left: 2vw;
+    top: 7.7vw;
+    min-height: calc(100vh - 7.7vw - 1.79vw);
+    display: grid;
+    grid-template-columns: repeat(var(--grid-cols), minmax(0, 1fr));
+    column-gap: var(--grid-gap);
+}
+
+.infoColumnRect{
+    grid-column: 2;
+    width: 100%;
+    height: 12.7vw;
+    background-color: #000;
+}
+.infoPhoto{
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    height: auto;
+    /* aspect-ratio: 1 / 1; */
+    object-fit: cover;
+    align-self: start;
+}
+
+.infoContacts{
+    grid-column: 8;
+    grid-row: 1;
+    align-self: start;
+    margin-top: 13vw;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2vw;
+    color: #000;
+    font-size: 1vw;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.infoContacts a{
+    color: inherit;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    /* justify-content: flex-end; */
+    gap: 0.2vw;
+    width: 100%;
+    text-align: right;
+}
+
+.infoCredits{
+    grid-column: 8;
+    align-self: flex-start;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0.2vw;
+    color: #000;
+    font-size: 1vw;
+    line-height: 1;
+    position: fixed;
+    bottom: 1.79vw;
+    width: var(--grid-col-size);
+}
+
+.infoCreditsLabel{
+    text-transform: none;
+    justify-self: end;
+    text-align: right;
+}
+
+.infoCreditsName{
+    text-transform: uppercase;
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2vw;
+    color: inherit;
+    text-decoration: none;
+    text-align: left;
+}
+.infoSections{
+    grid-column: 2 / span 5;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2vw;
+    align-self: start;
+    margin-top: 13vw;
+}
+.infoSection{
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    column-gap: var(--grid-gap);
+}
+.infoSectionTitle{
+    grid-column: 1;
+    color: #000;
+    font-size: 1vw;
+    line-height: 1;
+    font-weight: 400;
+    text-transform: lowercase;
+    text-align: right;
+}
+.infoSectionText{
+    grid-column: 2 / span 4;
+    color: #000;
+    font-size: 1vw;
+    line-height: 1.15;
+    white-space: normal;
+    text-align: left;
+}
+
+.infoCreditsName ion-icon,
+.infoContacts a ion-icon{
+    transform: rotate(35deg) translateY(.1vw) translateX(-.2vw);
+}
+
+.infoRow{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 10.8vw)) auto;
+    gap: 1vw;
+    align-items: center;
+}
+.infoRow .writPlaHold,
+.infoSectionEditor .writPlaHold{
+    width: 100%;
+}
+.infoSectionsEditor{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vw;
+}
+.infoSectionEditor{
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 1vw;
+    width: 34.4vw;
+}
+.infoSectionEditor .writPlaHold{
+    width: 10.8vw;
+    flex: 0 0 10.8vw;
+}
+.infoTextarea{
+    flex: 1 1 auto;
+    width: auto;
+    min-height: 9vw;
+    padding: 0;
+    border: 0;
+    outline: none;
+    resize: vertical;
+    background: transparent;
+    color: var(--blueBE);
+    font-size: 0.95vw;
+    line-height: 1.2;
+    text-decoration: underline;
+}
+.infoTextarea::placeholder{
+    color: var(--blueBE);
+}
+.infoSectionRemove{
+    position: absolute;
+    top: 0;
+    right: -2vw;
+}
+
+.siteCopyright{
+    position: fixed;
+    left: 2vw;
+    bottom: 1.79vw;
+    width: var(--grid-col-size);
+    color: #000;
+    font-size: 0.95vw;
+    line-height: 1;
+    text-transform: uppercase;
+}
+.projectShowBottomActions{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 1.79vw;
+    z-index: 30;
+}
+.projectShowBottomActionForm{
+    display: contents;
+}
+.projectShowBottomAction{
+    position: fixed;
+    bottom: 1.79vw;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: 1.8vw;
+    padding: 0 0.35vw;
+    background: var(--blueBE);
+    color: #fff;
+    font-size: 0.95vw;
+    line-height: 1;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.projectShowBottomActionSecondCol{
+    left: calc(2.7vw + (var(--grid-col-size) + var(--grid-gap)) * 5 - var(--grid-gap) - 0.35vw);
+    transform: translateX(-100%);
+}
+.projectShowBottomActionThirdCol{
+    left: calc(2.6vw + (var(--grid-col-size) + var(--grid-gap)) * 5);
+}
+
+.projectShow{
+    position: relative;
+    width: var(--grid-width);
+    left: 2vw;
+    top: 7.7vw;
+    display: grid;
+    grid-template-columns: repeat(var(--grid-cols), minmax(0, 1fr));
+    column-gap: var(--grid-gap);
+    margin-bottom: 2vw;
+}
+
+.projectShowClose{
+    position: fixed;
+    right: 1.5vw;
+    top: 7.2vw;
+    width: fit-content;
+    display: inline-flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    color: #000;
+    z-index: 10;
+}
+
+.projectShowClose ion-icon{
+    font-size: 2.5vw;
+    line-height: 1;
+}
+
+.projectShowMain{
+    position: fixed;
+    left: 2vw;
+    top: 7.7vw;
+    width: var(--grid-col-size);
+    max-width: var(--grid-col-size);
+    display: flex;
+    flex-direction: column;
+}
+
+.projectShowCover,
+.projectShowGalleryImage{
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.projectShowCover{
+    min-width: 0;
+}
+
+html.is-home-project-cover-transition [data-barba-namespace="project"] .projectShowCover{
+    visibility: hidden;
+}
+
+.projectShowGalleryImage{
+    min-width: 0;
+}
+
+.projectShowMeta{
+    position: fixed;
+    left: calc(2.2vw + (var(--grid-col-size) + var(--grid-gap)) * 1);
+    top: 7.7vw;
+    width: calc(var(--grid-col-size) * 3 + var(--grid-gap) * 2);
+    display: flex;
+    flex-direction: column;
+    gap: 0.35vw;
+    z-index: 5;
+}
+
+.projectShowInfoUnderCover{
+    display: flex;
+    flex-direction: column;
+    gap: 0.2vw;
+    margin-top: 0.45vw;
+}
+
+.projectShowInfoUnderCover .projectShowText,
+.projectShowInfoUnderCoverMobile .projectShowText{
+    text-transform: capitalize;
+}
+
+.projectShowInfoUnderCoverMobile{
+    display: none;
+}
+
+.projectShowCover{
+    object-fit: contain;
+}
+
+.projectShowTitle,
+.projectShowText{
+    color: #000;
+}
+
+.projectShowTitle{
+    font-size: 1.03vw;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #000;
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    height: 1.8vw;
+    margin: 0;
+    padding: 0 0.35vw;
+    line-height: 1;
+}
+
+.projectShowText,
+.projectShowRole{
+    font-size: 1vw;
+    line-height: 0.88;
+}
+
+.projectShowCredit{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: var(--grid-gap);
+    align-items: baseline;
+}
+
+.projectShowRole{
+    grid-column: 1;
+    font-weight: 400;
+    text-transform: lowercase;
+    justify-self: end;
+}
+
+.projectShowName{
+    grid-column: 2 / span 1;
+    text-transform: capitalize;
+}
+
+.projectShowGallery{
+    grid-column: 4 / span 4;
+    grid-row: 1;
+    align-self: start;
+    column-count: 2;
+    column-gap: var(--grid-gap);
+    padding-bottom: 3vw;
+}
+
+.projectShowGalleryItem{
+    break-inside: avoid;
+    margin-bottom: var(--grid-gap);
+}
+
+.projectShowGalleryItemPending{
+    opacity: 0;
+    will-change: opacity;
+}
+
+.projectShowGalleryImage{
+    display: block;
+    width: 100%;
+}
+
+@media (max-width: 800px){
+    .gridContainer{
+        width: calc((238.5 * 4 + 36 * 3) / 1206 * 100vw);
+        left: 50%;
+        transform: translateX(-50%);
+        grid-template-columns: repeat(4, calc(238.5 / 1206 * 100vw));
+        column-gap: calc(36 / 1206 * 100vw);
+    }
+    
+    .gridContainer .gridCol:nth-child(n+5){
+        display: none;
+    }
+    
+    nav{
+        height: 13vw;
+    }
+    
+    .backendBrand,
+    .hMRSF,
+    .navbarGuest .hMRSF{
+        left: calc(72 / 1206 * 100vw);
+    }
+    
+    .logoutButtonThirdCol{
+        left: calc((72 + (238.5 + 36) * 2) / 1206 * 100vw);
+        right: auto;
+    }
+    
+    .infoA,
+    .navbarGuest .infoA{
+        right: calc(72 / 1206 * 100vw);
+    }
+    
+    .siteCopyright{
+        left: calc(72 / 1206 * 100vw);
+        width: calc(238.5 / 1206 * 100vw);
+        font-size: 1.65vw;
+        line-height: 1.1;
+    }
+    
+    .backendBrand,
+    .hMRSF,
+    .infoA,
+    .logoutButton{
+        top: 4vw;
+        font-size: clamp(13px, 3.2vw, 18px);
+    }
+    
+    .hMRSFWithSubtitle{
+        gap: clamp(2px, 0.7vw, 6px);
+    }
+    
+    .hMRSFSubtitle{
+        font-size: 2vw;
+        top: 4vw;
+        width: 40vw!important;
+        /* background-color: green; */
+    }
+    
+    .navbarGuest .infoAActive{
+        height: auto;
+    }
+    
+    .projectsGrid,
+    .infoPage,
+    .projectShow,
+    .projectShowMain,
+    .projectShowMeta{
+        top: 13vw;
+    }
+    
+    .projectShowMain{
+        position: static;
+        top: auto;
+        left: auto;
+        width: auto;
+        max-width: none;
+        grid-column: 1 / span 2;
+    }
+    
+    .projectShowMeta{
+        position: static;
+        top: auto;
+        left: auto;
+        width: auto;
+        grid-column: 3 / span 2;
+        align-self: start;
+    }
+    
+    html.is-home-project-cover-transition [data-barba-namespace="project"] .projectShowMain{
+        position: fixed;
+        top: 13vw;
+        left: calc(72 / 1206 * 100vw);
+        width: calc((238.5 * 2 + 36) / 1206 * 100vw);
+        max-width: calc((238.5 * 2 + 36) / 1206 * 100vw);
+    }
+    
+    .infoPage{
+        min-height: calc(100vh - 13vw - 1.79vw);
+    }
+    
+    .logoutButton ion-icon{
+        transform: translateY(0.15vw);
+    }
+    
+    .infoPage{
+        width: calc((238.5 * 4 + 36 * 3) / 1206 * 100vw);
+        left: calc(72 / 1206 * 100vw);
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        column-gap: calc(36 / 1206 * 100vw);
+        row-gap: calc(36 / 1206 * 100vw);
+    }
+    
+    .infoColumnRect,
+    .infoSections{
+        grid-column: auto;
+    }
+    
+    .infoPhoto,
+    .infoColumnRect{
+        grid-column: 1 / span 2;
+        grid-row: 1;
+        width: 100%;
+        max-width: none;
+    }
+    
+    .infoSections{
+        grid-column: 1 / span 4;
+        margin-top: 48vw;
+        
+    }
+    
+    .infoContacts{
+        position: static;
+        left: auto;
+        bottom: auto;
+        width: 100%;
+        height: fit-content;
+        grid-column: 3 / span 1;
+        grid-row: 1;
+        margin-top: 0;
+        gap: 1vw;
+        justify-self: end;
+        align-self: start;
+    }
+    
+    .infoCredits{
+        position: fixed;
+        bottom: 1.79vw;
+        width: fit-content;
+        gap: 1vw;
+        align-self: flex-start;
+        grid-column: 3;
+        color: #000;
+        bottom: 1.79vw;
+        
+    }
+    
+    .infoCreditsLabel,
+    .infoCreditsName{
+        text-align: center;
+    }
+    
+    .infoContacts,
+    .infoCredits,
+    .infoSectionTitle,
+    .infoSectionText{
+        font-size: 2vw;
+    }
+    
+    .infoSection{
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        column-gap: calc(36 / 1206 * 100vw);
+        row-gap: 1vw;
+    }
+    
+    .infoSectionTitle{
+        grid-column: 1 / span 1;
+        text-align: right;
+        justify-self: end;
+    }
+    
+    .infoSectionText{
+        grid-column: 2 / span 3;
+    }
+    
+    .infoRow{
+        grid-template-columns: 1fr;
+        gap: 1.2vw;
+    }
+    
+    .infoSectionEditor{
+        width: 42vw;
+    }
+    
+    .infoTextarea{
+        min-height: 14vw;
+        font-size: 1.7vw;
+    }
+    
+    .infoSectionRemove{
+        right: 0;
+    }
+    
+    .addProjectButton{
+        bottom: 2.5vw;
+        width: 9vw;
+        height: 9vw;
+    }
+    
+    .addProjectButton ion-icon{
+        font-size: 5vw;
+    }
+    
+    .projectsGrid{
+        width: calc((238.5 * 4 + 36 * 3) / 1206 * 100vw);
+        left: 50%;
+        transform: translateX(-50%);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: calc(36 / 1206 * 100vw);
+        row-gap: calc(36 / 1206 * 100vw);
+    }
+    
+    .projectCardOverlay{
+        display: none;
+    }
+    
+    .projectCardTitle{
+        font-size: 1.5vw;
+    }
+    
+    .projectShow{
+        width: calc((238.5 * 4 + 36 * 3) / 1206 * 100vw);
+        left: calc(72 / 1206 * 100vw);
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        column-gap: calc(36 / 1206 * 100vw);
+        row-gap: calc(36 / 1206 * 100vw);
+    }
+    
+    .projectShowTitle{
+        font-size: 3vw;
+        height: auto;
+        padding: 1.5vw;
+    }
+    
+    .projectShowText,
+    .projectShowRole{
+        font-size: 3vw;
+        line-height: 1;
+    }
+    .projectShowText{
+        transform: translateY(1.5vw);
+    }
+    
+    .projectShowCredit{
+        transform: translateY(1.5vw);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: calc(36 / 1206 * 100vw);
+    }
+    
+    .projectShowRole{
+        justify-self: start;
+        text-align: left;
+        /* background-color: green; */
+        /* width: 15vw; */
+    }
+    
+    .projectShowName{
+        grid-column: 2 / span 1;
+        justify-self: start;
+        text-align: left;
+    }
+    
+    .projectShowClose{
+        position: fixed;
+        right: 1.1vw;
+        top: 12.5vw;
+        transform: translateX(-100%);
+        width: fit-content;
+        justify-content: flex-end;
+        margin-bottom: 0;
+    }
+    
+    .projectShowClose ion-icon{
+        font-size: 4vw;
+    }
+    
+    .projectShowInfoUnderCoverMobile{
+        display: none;
+    }
+    
+    .projectShowGallery{
+        grid-column: 1 / span 4;
+        grid-row: 2;
+        width: 100%;
+        column-count: 1;
+        column-gap: 0;
+    }
+    
+    .projectShowGalleryItem{
+        margin-bottom: calc(36 / 1206 * 100vw);
+    }
+    
+    .projectShowCover,
+    .projectShowGalleryImage{
+        min-width: 0;
+    }
+}
