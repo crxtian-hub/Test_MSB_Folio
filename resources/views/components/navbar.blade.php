@@ -3,10 +3,12 @@
     'subtitle' => null,
     'showInfoLink' => false,
     'infoActive' => false,
+    'homeRoute' => 'home',
+    'infoRoute' => 'info',
 ])
 
 <nav class="navbarGuest{{ $infoActive ? ' navbarGuestInfo' : '' }}" data-persistent-nav>
-    <a href="{{ route('home') }}" class="hMRSF{{ $subtitle ? ' hMRSFWithSubtitle' : '' }}">
+    <a href="{{ route($homeRoute) }}" class="hMRSF{{ $subtitle ? ' hMRSFWithSubtitle' : '' }}">
         <span class="hMRSFTitle">{{ $title }}</span>
         @if ($subtitle)
             <span class="hMRSFSubtitle">{{ $subtitle }}</span>
@@ -17,7 +19,7 @@
         @if ($infoActive)
             <span class="infoA infoAActive" aria-current="page">INFO</span>
         @else
-            <a class="infoA" href="{{ route('info') }}">
+            <a class="infoA" href="{{ route($infoRoute) }}">
                 INFO
             </a>
         @endif

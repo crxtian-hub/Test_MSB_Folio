@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600" role="img" aria-labelledby="title desc">
+  <title id="title">Demo Cover 01</title>
+  <desc id="desc">Editorial Alba placeholder image</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f6ede1"/>
+      <stop offset="100%" stop-color="#d3b296"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1600" fill="url(#bg)"/>
+  <rect x="140" y="180" width="920" height="1240" fill="none" stroke="#1d1d1d" stroke-width="8"/>
+  <text x="160" y="220" fill="#1d1d1d" font-family="Arial, Helvetica, sans-serif" font-size="42" letter-spacing="2">MARIA SOFIA BRINI</text>
+  <text x="160" y="300" fill="#1d1d1d" font-family="Arial, Helvetica, sans-serif" font-size="102" font-weight="700">EDITORIAL ALBA</text>
+  <text x="160" y="370" fill="#1d1d1d" font-family="Arial, Helvetica, sans-serif" font-size="36">DEMO COVER 01</text>
+</svg>

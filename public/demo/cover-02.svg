@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600" role="img" aria-labelledby="title desc">
+  <title id="title">Demo Cover 02</title>
+  <desc id="desc">Campaign Venice placeholder image</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#dce8f8"/>
+      <stop offset="100%" stop-color="#9fb8dd"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1600" fill="url(#bg)"/>
+  <circle cx="920" cy="340" r="200" fill="#1f3551" opacity="0.16"/>
+  <rect x="130" y="210" width="940" height="1180" fill="none" stroke="#1f3551" stroke-width="8"/>
+  <text x="160" y="250" fill="#1f3551" font-family="Arial, Helvetica, sans-serif" font-size="42" letter-spacing="2">MARIA SOFIA BRINI</text>
+  <text x="160" y="330" fill="#1f3551" font-family="Arial, Helvetica, sans-serif" font-size="96" font-weight="700">CAMPAIGN VENICE</text>
+  <text x="160" y="395" fill="#1f3551" font-family="Arial, Helvetica, sans-serif" font-size="36">DEMO COVER 02</text>
+</svg>

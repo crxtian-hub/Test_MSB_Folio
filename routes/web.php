@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\DemoPageController;
 use App\Http\Controllers\Admin\PhotoController;
 use App\Http\Controllers\Admin\InfoPageController;
 use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
@@ -9,6 +10,13 @@ use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/info', [PageController::class, 'info'])->name('info');
 Route::get('/projects/{project:slug}', [PageController::class, 'show'])->name('projects.show');
+Route::prefix('demo')
+    ->name('demo.')
+    ->group(function () {
+        Route::get('/', [DemoPageController::class, 'home'])->name('home');
+        Route::get('/info', [DemoPageController::class, 'info'])->name('info');
+        Route::get('/projects/{slug}', [DemoPageController::class, 'show'])->name('projects.show');
+    });
 
 // CRUD protetto da auth (solo admin)
 

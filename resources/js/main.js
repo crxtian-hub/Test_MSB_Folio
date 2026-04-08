@@ -1710,7 +1710,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const isProjectPage = document.querySelector('[data-barba-namespace="project"]');
 
             if (!link) {
-                if (projectHomeLink && isProjectPage && new URL(projectHomeLink.href).pathname === '/') {
+                const isProjectCloseLink = projectHomeLink?.classList?.contains('projectShowClose') ?? false;
+                const isLegacyHomeLink = projectHomeLink
+                    ? new URL(projectHomeLink.href).pathname === '/'
+                    : false;
+
+                if (projectHomeLink && isProjectPage && (isProjectCloseLink || isLegacyHomeLink)) {
                     captureProjectCoverTransition({
                         href: window.location.href,
                         image: document.querySelector('.projectShowCover'),

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600" role="img" aria-labelledby="title desc">
+  <title id="title">Demo Gallery 03</title>
+  <desc id="desc">Gallery placeholder image three</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f7e6e4"/>
+      <stop offset="100%" stop-color="#d9a7a0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1600" fill="url(#bg)"/>
+  <path d="M120 980 C380 700, 780 700, 1080 980" fill="none" stroke="#6f2f2a" stroke-width="12" opacity="0.33"/>
+  <rect x="120" y="200" width="960" height="1200" fill="none" stroke="#6f2f2a" stroke-width="7"/>
+  <text x="160" y="310" fill="#6f2f2a" font-family="Arial, Helvetica, sans-serif" font-size="88" font-weight="700">GALLERY 03</text>
+</svg>

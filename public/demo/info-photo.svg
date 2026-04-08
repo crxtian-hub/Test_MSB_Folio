@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Demo Info Photo</title>
+  <desc id="desc">Info portrait placeholder image</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#efe6d8"/>
+      <stop offset="100%" stop-color="#b99567"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="1200" fill="url(#bg)"/>
+  <circle cx="450" cy="410" r="170" fill="#fff" opacity="0.35"/>
+  <rect x="100" y="140" width="700" height="920" fill="none" stroke="#2b1e14" stroke-width="7"/>
+  <text x="140" y="240" fill="#2b1e14" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700">MARIA SOFIA BRINI</text>
+  <text x="140" y="300" fill="#2b1e14" font-family="Arial, Helvetica, sans-serif" font-size="32">DEMO INFO IMAGE</text>
+</svg>
