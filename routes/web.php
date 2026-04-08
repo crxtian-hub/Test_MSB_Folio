@@ -7,9 +7,16 @@ use App\Http\Controllers\Admin\PhotoController;
 use App\Http\Controllers\Admin\InfoPageController;
 use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
 
-Route::get('/', [PageController::class, 'home'])->name('home');
-Route::get('/info', [PageController::class, 'info'])->name('info');
-Route::get('/projects/{project:slug}', [PageController::class, 'show'])->name('projects.show');
+if (filter_var(env('DEMO_MODE', false), FILTER_VALIDATE_BOOL)) {
+    Route::get('/', fn () => redirect()->route('demo.home'))->name('home');
+    Route::get('/info', fn () => redirect()->route('demo.info'))->name('info');
+    Route::get('/projects/{project}', fn (string $project) => redirect()->route('demo.projects.show', ['slug' => $project]))->name('projects.show');
+} else {
+    Route::get('/', [PageController::class, 'home'])->name('home');
+    Route::get('/info', [PageController::class, 'info'])->name('info');
+    Route::get('/projects/{project:slug}', [PageController::class, 'show'])->name('projects.show');
+}
+
 Route::prefix('demo')
     ->name('demo.')
     ->group(function () {
